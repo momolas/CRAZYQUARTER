@@ -22,7 +22,6 @@ struct LaunchView: View {
                 
                 Text("CRAZYQUARTER")
                     .font(.largeTitle)
-                
                 Text("Une application pour jouer au morpion")
                     .font(.caption)
                 
