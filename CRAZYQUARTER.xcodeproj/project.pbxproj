@@ -7,62 +7,33 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CD053F2D2BA83B020054CC0D /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD053F2C2BA83B020054CC0D /* Board.swift */; };
+		CD053F2F2BA83B5F0054CC0D /* TicTacToeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD053F2E2BA83B5F0054CC0D /* TicTacToeModel.swift */; };
+		CD053F312BA84D160054CC0D /* Square.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD053F302BA84D160054CC0D /* Square.swift */; };
 		CDA58DB72B63D0490081C747 /* CRAZYQUARTERApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA58DB62B63D0490081C747 /* CRAZYQUARTERApp.swift */; };
-		CDA58DB92B63D0490081C747 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA58DB82B63D0490081C747 /* ContentView.swift */; };
+		CDA58DB92B63D0490081C747 /* LaunchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA58DB82B63D0490081C747 /* LaunchView.swift */; };
 		CDA58DBB2B63D04B0081C747 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CDA58DBA2B63D04B0081C747 /* Assets.xcassets */; };
 		CDA58DBF2B63D04B0081C747 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CDA58DBE2B63D04B0081C747 /* Preview Assets.xcassets */; };
-		CDA58DC92B63D04C0081C747 /* CRAZYQUARTERTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA58DC82B63D04C0081C747 /* CRAZYQUARTERTests.swift */; };
-		CDA58DD32B63D04C0081C747 /* CRAZYQUARTERUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA58DD22B63D04C0081C747 /* CRAZYQUARTERUITests.swift */; };
-		CDA58DD52B63D04C0081C747 /* CRAZYQUARTERUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA58DD42B63D04C0081C747 /* CRAZYQUARTERUITestsLaunchTests.swift */; };
+		CDA58DE52B63D1040081C747 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA58DE22B63D1040081C747 /* ContentView.swift */; };
+		CDA58DE62B63D1040081C747 /* SquareView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA58DE32B63D1040081C747 /* SquareView.swift */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		CDA58DC52B63D04C0081C747 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = CDA58DAB2B63D0490081C747 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = CDA58DB22B63D0490081C747;
-			remoteInfo = CRAZYQUARTER;
-		};
-		CDA58DCF2B63D04C0081C747 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = CDA58DAB2B63D0490081C747 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = CDA58DB22B63D0490081C747;
-			remoteInfo = CRAZYQUARTER;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
+		CD053F2C2BA83B020054CC0D /* Board.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Board.swift; sourceTree = "<group>"; };
+		CD053F2E2BA83B5F0054CC0D /* TicTacToeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicTacToeModel.swift; sourceTree = "<group>"; };
+		CD053F302BA84D160054CC0D /* Square.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Square.swift; sourceTree = "<group>"; };
 		CDA58DB32B63D0490081C747 /* CRAZYQUARTER.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CRAZYQUARTER.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CDA58DB62B63D0490081C747 /* CRAZYQUARTERApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CRAZYQUARTERApp.swift; sourceTree = "<group>"; };
-		CDA58DB82B63D0490081C747 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		CDA58DB82B63D0490081C747 /* LaunchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchView.swift; sourceTree = "<group>"; };
 		CDA58DBA2B63D04B0081C747 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CDA58DBC2B63D04B0081C747 /* CRAZYQUARTER.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CRAZYQUARTER.entitlements; sourceTree = "<group>"; };
 		CDA58DBE2B63D04B0081C747 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		CDA58DC42B63D04C0081C747 /* CRAZYQUARTERTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CRAZYQUARTERTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		CDA58DC82B63D04C0081C747 /* CRAZYQUARTERTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CRAZYQUARTERTests.swift; sourceTree = "<group>"; };
-		CDA58DCE2B63D04C0081C747 /* CRAZYQUARTERUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CRAZYQUARTERUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		CDA58DD22B63D04C0081C747 /* CRAZYQUARTERUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CRAZYQUARTERUITests.swift; sourceTree = "<group>"; };
-		CDA58DD42B63D04C0081C747 /* CRAZYQUARTERUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CRAZYQUARTERUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		CDA58DE22B63D1040081C747 /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		CDA58DE32B63D1040081C747 /* SquareView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SquareView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		CDA58DB02B63D0490081C747 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		CDA58DC12B63D04C0081C747 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		CDA58DCB2B63D04C0081C747 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -76,8 +47,6 @@
 			isa = PBXGroup;
 			children = (
 				CDA58DB52B63D0490081C747 /* CRAZYQUARTER */,
-				CDA58DC72B63D04C0081C747 /* CRAZYQUARTERTests */,
-				CDA58DD12B63D04C0081C747 /* CRAZYQUARTERUITests */,
 				CDA58DB42B63D0490081C747 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -86,8 +55,6 @@
 			isa = PBXGroup;
 			children = (
 				CDA58DB32B63D0490081C747 /* CRAZYQUARTER.app */,
-				CDA58DC42B63D04C0081C747 /* CRAZYQUARTERTests.xctest */,
-				CDA58DCE2B63D04C0081C747 /* CRAZYQUARTERUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -96,7 +63,12 @@
 			isa = PBXGroup;
 			children = (
 				CDA58DB62B63D0490081C747 /* CRAZYQUARTERApp.swift */,
-				CDA58DB82B63D0490081C747 /* ContentView.swift */,
+				CDA58DB82B63D0490081C747 /* LaunchView.swift */,
+				CDA58DE22B63D1040081C747 /* ContentView.swift */,
+				CDA58DE32B63D1040081C747 /* SquareView.swift */,
+				CD053F302BA84D160054CC0D /* Square.swift */,
+				CD053F2C2BA83B020054CC0D /* Board.swift */,
+				CD053F2E2BA83B5F0054CC0D /* TicTacToeModel.swift */,
 				CDA58DBA2B63D04B0081C747 /* Assets.xcassets */,
 				CDA58DBC2B63D04B0081C747 /* CRAZYQUARTER.entitlements */,
 				CDA58DBD2B63D04B0081C747 /* Preview Content */,
@@ -110,23 +82,6 @@
 				CDA58DBE2B63D04B0081C747 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
-			sourceTree = "<group>";
-		};
-		CDA58DC72B63D04C0081C747 /* CRAZYQUARTERTests */ = {
-			isa = PBXGroup;
-			children = (
-				CDA58DC82B63D04C0081C747 /* CRAZYQUARTERTests.swift */,
-			);
-			path = CRAZYQUARTERTests;
-			sourceTree = "<group>";
-		};
-		CDA58DD12B63D04C0081C747 /* CRAZYQUARTERUITests */ = {
-			isa = PBXGroup;
-			children = (
-				CDA58DD22B63D04C0081C747 /* CRAZYQUARTERUITests.swift */,
-				CDA58DD42B63D04C0081C747 /* CRAZYQUARTERUITestsLaunchTests.swift */,
-			);
-			path = CRAZYQUARTERUITests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -149,42 +104,6 @@
 			productReference = CDA58DB32B63D0490081C747 /* CRAZYQUARTER.app */;
 			productType = "com.apple.product-type.application";
 		};
-		CDA58DC32B63D04C0081C747 /* CRAZYQUARTERTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = CDA58DDB2B63D04C0081C747 /* Build configuration list for PBXNativeTarget "CRAZYQUARTERTests" */;
-			buildPhases = (
-				CDA58DC02B63D04C0081C747 /* Sources */,
-				CDA58DC12B63D04C0081C747 /* Frameworks */,
-				CDA58DC22B63D04C0081C747 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				CDA58DC62B63D04C0081C747 /* PBXTargetDependency */,
-			);
-			name = CRAZYQUARTERTests;
-			productName = CRAZYQUARTERTests;
-			productReference = CDA58DC42B63D04C0081C747 /* CRAZYQUARTERTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		CDA58DCD2B63D04C0081C747 /* CRAZYQUARTERUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = CDA58DDE2B63D04C0081C747 /* Build configuration list for PBXNativeTarget "CRAZYQUARTERUITests" */;
-			buildPhases = (
-				CDA58DCA2B63D04C0081C747 /* Sources */,
-				CDA58DCB2B63D04C0081C747 /* Frameworks */,
-				CDA58DCC2B63D04C0081C747 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				CDA58DD02B63D04C0081C747 /* PBXTargetDependency */,
-			);
-			name = CRAZYQUARTERUITests;
-			productName = CRAZYQUARTERUITests;
-			productReference = CDA58DCE2B63D04C0081C747 /* CRAZYQUARTERUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -197,14 +116,6 @@
 				TargetAttributes = {
 					CDA58DB22B63D0490081C747 = {
 						CreatedOnToolsVersion = 15.2;
-					};
-					CDA58DC32B63D04C0081C747 = {
-						CreatedOnToolsVersion = 15.2;
-						TestTargetID = CDA58DB22B63D0490081C747;
-					};
-					CDA58DCD2B63D04C0081C747 = {
-						CreatedOnToolsVersion = 15.2;
-						TestTargetID = CDA58DB22B63D0490081C747;
 					};
 				};
 			};
@@ -222,8 +133,6 @@
 			projectRoot = "";
 			targets = (
 				CDA58DB22B63D0490081C747 /* CRAZYQUARTER */,
-				CDA58DC32B63D04C0081C747 /* CRAZYQUARTERTests */,
-				CDA58DCD2B63D04C0081C747 /* CRAZYQUARTERUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -238,20 +147,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		CDA58DC22B63D04C0081C747 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		CDA58DCC2B63D04C0081C747 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -259,42 +154,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CDA58DB92B63D0490081C747 /* ContentView.swift in Sources */,
+				CD053F312BA84D160054CC0D /* Square.swift in Sources */,
+				CDA58DB92B63D0490081C747 /* LaunchView.swift in Sources */,
+				CDA58DE62B63D1040081C747 /* SquareView.swift in Sources */,
+				CD053F2D2BA83B020054CC0D /* Board.swift in Sources */,
+				CD053F2F2BA83B5F0054CC0D /* TicTacToeModel.swift in Sources */,
+				CDA58DE52B63D1040081C747 /* ContentView.swift in Sources */,
 				CDA58DB72B63D0490081C747 /* CRAZYQUARTERApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		CDA58DC02B63D04C0081C747 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				CDA58DC92B63D04C0081C747 /* CRAZYQUARTERTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		CDA58DCA2B63D04C0081C747 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				CDA58DD32B63D04C0081C747 /* CRAZYQUARTERUITests.swift in Sources */,
-				CDA58DD52B63D04C0081C747 /* CRAZYQUARTERUITestsLaunchTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		CDA58DC62B63D04C0081C747 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = CDA58DB22B63D0490081C747 /* CRAZYQUARTER */;
-			targetProxy = CDA58DC52B63D04C0081C747 /* PBXContainerItemProxy */;
-		};
-		CDA58DD02B63D04C0081C747 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = CDA58DB22B63D0490081C747 /* CRAZYQUARTER */;
-			targetProxy = CDA58DCF2B63D04C0081C747 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		CDA58DD62B63D04C0081C747 /* Debug */ = {
@@ -349,6 +219,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -404,6 +275,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -434,7 +306,7 @@
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 14.2;
@@ -442,7 +314,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.momolas.CRAZYQUARTER;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -472,7 +345,7 @@
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 14.2;
@@ -480,100 +353,11 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.momolas.CRAZYQUARTER;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Release;
-		};
-		CDA58DDC2B63D04C0081C747 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = X8SJ59XXC8;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
-				MACOSX_DEPLOYMENT_TARGET = 14.2;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.momolas.CRAZYQUARTERTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CRAZYQUARTER.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/CRAZYQUARTER";
-			};
-			name = Debug;
-		};
-		CDA58DDD2B63D04C0081C747 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = X8SJ59XXC8;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
-				MACOSX_DEPLOYMENT_TARGET = 14.2;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.momolas.CRAZYQUARTERTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CRAZYQUARTER.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/CRAZYQUARTER";
-			};
-			name = Release;
-		};
-		CDA58DDF2B63D04C0081C747 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = X8SJ59XXC8;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
-				MACOSX_DEPLOYMENT_TARGET = 14.2;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.momolas.CRAZYQUARTERUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = CRAZYQUARTER;
-			};
-			name = Debug;
-		};
-		CDA58DE02B63D04C0081C747 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = X8SJ59XXC8;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
-				MACOSX_DEPLOYMENT_TARGET = 14.2;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.momolas.CRAZYQUARTERUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = CRAZYQUARTER;
 			};
 			name = Release;
 		};
@@ -594,24 +378,6 @@
 			buildConfigurations = (
 				CDA58DD92B63D04C0081C747 /* Debug */,
 				CDA58DDA2B63D04C0081C747 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		CDA58DDB2B63D04C0081C747 /* Build configuration list for PBXNativeTarget "CRAZYQUARTERTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				CDA58DDC2B63D04C0081C747 /* Debug */,
-				CDA58DDD2B63D04C0081C747 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		CDA58DDE2B63D04C0081C747 /* Build configuration list for PBXNativeTarget "CRAZYQUARTERUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				CDA58DDF2B63D04C0081C747 /* Debug */,
-				CDA58DE02B63D04C0081C747 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
