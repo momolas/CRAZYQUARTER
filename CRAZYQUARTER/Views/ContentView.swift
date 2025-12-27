@@ -13,30 +13,30 @@ struct ContentView: View {
     @Environment(\.colorScheme) var colorScheme
     var ticTacToe: TicTacToeModel
     @State var viewModel: ContentViewModel
-
+    
     @AppStorage("vibro") private var vibro: Bool = true
-
+    
     var currentPlayerText: String {
         return ticTacToe.currentPlayer == false ? "X" : "O"
     }
-
+    
     var aiMoveText: String {
         return ticTacToe.currentPlayer == false ? "vous" : "l'IA"
     }
-
+    
     func resetGame() {
         ticTacToe.resetGame()
     }
-
+    
     func buttonAction(_ index : Int) {
         if (ticTacToe.currentPlayer == false && viewModel.selection == false) || viewModel.selection == true {
             _ = ticTacToe.makeMove(index: index, gameType: viewModel.selection)
         }
     }
-
+    
     var body: some View {
         @Bindable var bindableModel = ticTacToe
-
+        
         VStack {
             HStack {
                 Button(action: {
@@ -50,7 +50,7 @@ struct ContentView: View {
                         .foregroundStyle(colorScheme == .dark ? Color.white.opacity(0.7) : Color.black.opacity(0.7))
                 })
 				.sensoryFeedback(.impact(weight: .light), trigger: vibro)
-
+                
                 Picker(selection: $viewModel.selection, label: Text("Partie")) {
                     Text("IA")
                         .tag(false)
@@ -63,7 +63,7 @@ struct ContentView: View {
                     resetGame()
                 }
 				.sensoryFeedback(.impact(weight: .light), trigger: viewModel.selection)
-
+                
                 ZStack {
                     Button(action: {
                         viewModel.popup.toggle()
@@ -83,7 +83,7 @@ struct ContentView: View {
                                 .font(.system(size: 80))
                                 .padding(.top, 20)
                                 .foregroundStyle(colorScheme == .dark ? Color.white.opacity(0.7) : Color.black.opacity(0.7))
-
+                            
                             Text("Demo Swift App, made by Momo L'As")
                                 .bold()
                                 .font(.title3)
@@ -93,20 +93,20 @@ struct ContentView: View {
                     }
                 }
             }
-
+            
             Spacer()
-
+            
             Text(viewModel.selection == false ? "Morpion - IA" : "Morpion - PvP")
                 .bold()
                 .font(.title)
                 .foregroundStyle(colorScheme == .dark ? Color.white.opacity(0.7) : Color.black.opacity(0.7))
-
+            
             Text(viewModel.selection == true ? "À \(currentPlayerText) de jouer" : "À \(aiMoveText) de jouer")
                 .bold()
                 .font(.title2)
                 .padding(.bottom)
                 .foregroundStyle(colorScheme == .dark ? Color.white.opacity(0.7) : Color.black.opacity(0.7))
-
+            
             Grid {
                 ForEach(0..<3) { row in
                     GridRow {
@@ -122,9 +122,9 @@ struct ContentView: View {
                     }
                 }
             }
-
+            
             Spacer()
-
+            
             Button(action: {
                 resetGame()
             }, label: {
@@ -139,7 +139,7 @@ struct ContentView: View {
             .clipShape(.rect(cornerRadius: 5))
             .alert(isPresented: $bindableModel.gameOver) {
                 var text = ""
-
+                
                 if viewModel.selection == false {
                     if ticTacToe.winner == .x {
                         text = "Vous avez gagné !"
@@ -157,7 +157,7 @@ struct ContentView: View {
                         text = "Match nul !"
                     }
                 }
-
+                
                 return Alert(
                     title: Text(text),
                     dismissButton: .cancel(Text("Ok"), action: {

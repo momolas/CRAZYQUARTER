@@ -30,7 +30,7 @@ struct LaunchView: View {
                 
                 // Using NavigationLink with value-based navigation is preferred, but Destination is okay for simple cases if simpler.
                 // Directives say: "Use the navigationDestination(for:) modifier to specify navigation"
-
+                
                 NavigationLink(value: "Game") {
                     Image(systemName: "xmark.circle")
                         .resizable()

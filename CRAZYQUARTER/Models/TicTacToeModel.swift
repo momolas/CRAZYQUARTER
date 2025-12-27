@@ -19,9 +19,9 @@ class TicTacToeModel {
     
     // Haptic feedback trigger counter
     var hapticTrigger: Int = 0
-
+    
     init(currentPlayer: Bool = false) {
-        self.squares = [Square](repeating: Square(status: .empty), count: 9)
+        self.squares = (0..<9).map { _ in Square(status: .empty) }
         self.currentPlayer = currentPlayer
     }
     
@@ -81,7 +81,7 @@ class TicTacToeModel {
             winner = .empty
             return true
         }
-
+        
         if !currentPlayer && !gameType {
             Task {
                 try? await Task.sleep(for: .seconds(0.5))
@@ -102,7 +102,7 @@ class TicTacToeModel {
     private func makeAIMove() {
         let board = Board(positions: boardPositions, currentTurn: .o, lastMove: -1)
         let bestMove = board.findBestMove()
-
+        
         if bestMove >= 0 && bestMove < squares.count {
             currentPlayer = true
             _ = makeMove(index: bestMove, gameType: true)

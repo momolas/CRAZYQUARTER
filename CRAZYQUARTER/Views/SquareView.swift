@@ -11,9 +11,9 @@ import SwiftUI
 struct SquareView : View {
     @Environment(\.colorScheme) var colorScheme
     let square: Square
-
+    
     var action: () -> Void
-
+    
     var body: some View {
         Button(action: {
             self.action()
@@ -27,7 +27,7 @@ struct SquareView : View {
                 .padding(4)
         })
     }
-
+    
     func textForStatus(_ status: SquareStatus) -> String {
         switch status {
         case .x, .xw: return "X"
@@ -35,14 +35,14 @@ struct SquareView : View {
         default: return " "
         }
     }
-
+    
     func colorForStatus(_ status: SquareStatus) -> Color {
         if status == .xw || status == .ow {
             return Color.green.opacity(0.9)
         }
         return colorScheme == .dark ? Color.white.opacity(0.9) : Color.black.opacity(0.9)
     }
-
+    
     var backgroundColor: Color {
         return colorScheme == .dark ? Color.white.opacity(0.3) : Color.gray.opacity(0.3)
     }
