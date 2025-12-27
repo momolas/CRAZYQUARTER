@@ -9,16 +9,12 @@ import SwiftUI
 
 @main
 struct CRAZYQUARTERApp: App {
-    let viewModel = ViewModel()
-    let ticTacToe: TicTacToeModel
-    
-    init() {
-        self.ticTacToe = TicTacToeModel(squares: [Square](repeating: Square(status: .empty), count: 9), currentPlayer: false)
-    }
+    @State private var ticTacToe = TicTacToeModel(currentPlayer: false)
     
     var body: some Scene {
         WindowGroup {
-            ContentView(ticTacToe: ticTacToe, viewModel: ViewModel())
+            // LaunchView is the entry, it handles navigation to ContentView.
+            LaunchView(ticTacToe: ticTacToe)
         }
     }
 }
