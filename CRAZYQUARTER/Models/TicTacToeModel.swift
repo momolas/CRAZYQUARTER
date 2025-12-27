@@ -66,7 +66,8 @@ class TicTacToeModel {
     }
     
     func makeMove(index: Int, gameType: Bool) -> Bool {
-        let player = currentPlayer ? SquareStatus.x : SquareStatus.o
+        // If currentPlayer is false, it's X's turn. If true, it's O's turn.
+        let player = currentPlayer ? SquareStatus.o : SquareStatus.x
 
         guard squares[index].squareStatus == .empty else { return false }
         
