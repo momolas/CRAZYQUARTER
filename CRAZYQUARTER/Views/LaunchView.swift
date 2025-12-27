@@ -9,10 +9,7 @@ import SwiftUI
 
 struct LaunchView: View {
     
-    // 1. Dependency Injection
     let ticTacToe: TicTacToeModel
-    // We should probably create the viewModel here or in the App, or inside NavigationLink destination.
-    // Creating it inside Destination is fine if it doesn't need to persist across this view.
     
     var body: some View {
         NavigationStack {
@@ -27,9 +24,6 @@ struct LaunchView: View {
                     .font(.caption)
                 
                 Spacer()
-                
-                // Using NavigationLink with value-based navigation is preferred, but Destination is okay for simple cases if simpler.
-                // Directives say: "Use the navigationDestination(for:) modifier to specify navigation"
                 
                 NavigationLink(value: "Game") {
                     Image(systemName: "xmark.circle")
