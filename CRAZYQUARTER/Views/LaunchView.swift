@@ -11,6 +11,8 @@ struct LaunchView: View {
     
     // 1. Dependency Injection
     let ticTacToe: TicTacToeModel
+    // We should probably create the viewModel here or in the App, or inside NavigationLink destination.
+    // Creating it inside Destination is fine if it doesn't need to persist across this view.
     
     var body: some View {
         NavigationStack {
@@ -26,19 +28,27 @@ struct LaunchView: View {
                 
                 Spacer()
                 
-                NavigationLink(destination: ContentView(ticTacToe: ticTacToe, viewModel: ViewModel()),
-                               label: {
+                // Using NavigationLink with value-based navigation is preferred, but Destination is okay for simple cases if simpler.
+                // Directives say: "Use the navigationDestination(for:) modifier to specify navigation"
+
+                NavigationLink(value: "Game") {
                     Image(systemName: "xmark.circle")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
-                        .foregroundColor(.green)
+                        .foregroundStyle(.green)
                         .frame(width: 200, height: 200)
-                })
+                }
+                .accessibilityLabel("Jouer")
                 
                 Spacer()
                 Spacer()
             }
             .navigationBarTitleDisplayMode(.inline)
+            .navigationDestination(for: String.self) { value in
+                if value == "Game" {
+                    ContentView(ticTacToe: ticTacToe, viewModel: ContentViewModel())
+                }
+            }
         }
     }
 }

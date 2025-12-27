@@ -42,7 +42,7 @@ struct Board {
         
         for line in lines {
             let squares = line.map { positions[$0] }
-            if squares.allSatisfy({ $0 == currentTurn }) {
+            if squares.allSatisfy({ $0 == .x }) || squares.allSatisfy({ $0 == .o }) {
                 return true
             }
         }
