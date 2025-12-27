@@ -7,48 +7,35 @@
 
 import Foundation
 import SwiftUI
+import Observation
 
+@Observable
 @MainActor
-class TicTacToeModel: ObservableObject {
-    @Published var squares: [Square]
-    @Published var currentPlayer: Bool = false          // Renamed for clarity
-    @State private var winner: SquareStatus = .empty    // Gagnant
-    @State private var gameOver: Bool = false           // Fin de partie
+class TicTacToeModel {
+    var squares: [Square]
+    var currentPlayer: Bool = false          // Renamed for clarity
+    var winner: SquareStatus = .empty    // Gagnant
+    var gameOver: Bool = false           // Fin de partie
     
-    init(squares: [Square], currentPlayer: Bool) {
+    // Haptic feedback trigger counter
+    var hapticTrigger: Int = 0
+
+    init(currentPlayer: Bool = false) {
         self.squares = [Square](repeating: Square(status: .empty), count: 9)
         self.currentPlayer = currentPlayer
     }
     
-//    init(squares: [Square], currentPlayer: Bool, winner: SquareStatus, gameOver: Bool) {
-//        self.squares = squares
-//        self.currentPlayer = currentPlayer
-//        self.winner = winner
-//        self.gameOver = gameOver
-//    }
-    
     func resetGame() {
         squares = squares.map { square in
             let newSquare = square
-            newSquare.squareStatus = .empty             // Ou l'état initial souhaité
+            newSquare.squareStatus = .empty
             return newSquare
         }
 
         currentPlayer = false
+        winner = .empty
+        gameOver = false
     }
-    
-//    var gameOver: (SquareStatus, Bool) {
-//        guard !gameOver else { return (.empty, false) }
-//        if var winner = checkWinner() {
-//            colorize(winner: winner.0, winningLine: winner.1)
-////            winner = winner.0
-//            return (winner.0, true)
-//        } else if squares.allSatisfy({ $0.squareStatus != .empty }) {
-//            gameOver = true
-//            return (.empty, true)
-//        }
-//        return (.empty, false)
-//    }
     
     private func checkWinner() -> (SquareStatus, [Int])? {
         let lines = [
@@ -74,6 +61,7 @@ class TicTacToeModel: ObservableObject {
                 squares[i].squareStatus = winner
             }
         }
+        self.winner = winner
         gameOver = true
     }
     
@@ -84,16 +72,24 @@ class TicTacToeModel: ObservableObject {
         
         squares[index].squareStatus = player
         
-        if !currentPlayer && gameType {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+        if let winnerTuple = checkWinner() {
+            colorize(winner: winnerTuple.0, winningLine: winnerTuple.1)
+            return true
+        } else if squares.allSatisfy({ $0.squareStatus != .empty }) {
+            gameOver = true
+            winner = .empty
+            return true
+        }
+
+        if !currentPlayer && !gameType {
+            Task {
+                try? await Task.sleep(for: .seconds(0.5))
                 self.makeAIMove()
-                ContentView.triggerHapticFeedback(type: 2)
-                _ = self.gameOver
+                self.hapticTrigger += 1
             }
         }
         
         currentPlayer.toggle()
-        _ = self.gameOver
         
         return true
     }
@@ -105,7 +101,10 @@ class TicTacToeModel: ObservableObject {
     private func makeAIMove() {
         let board = Board(positions: boardPositions, currentTurn: .o, lastMove: -1)
         let bestMove = board.findBestMove()
-        currentPlayer = true
-        _ = makeMove(index: bestMove, gameType: true)
+
+        if bestMove >= 0 && bestMove < squares.count {
+            currentPlayer = true
+            _ = makeMove(index: bestMove, gameType: true)
+        }
     }
 }

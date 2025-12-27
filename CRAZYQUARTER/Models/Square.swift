@@ -7,13 +7,16 @@
 
 import Foundation
 import SwiftUI
+import Observation
 
 enum SquareStatus {
     case empty, x, o, xw, ow
 }
 
-class Square : ObservableObject {
-    @Published var squareStatus: SquareStatus
+@Observable
+@MainActor
+class Square {
+    var squareStatus: SquareStatus
     
     init(status: SquareStatus) {
         self.squareStatus = status
