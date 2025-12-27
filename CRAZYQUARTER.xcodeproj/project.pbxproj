@@ -8,28 +8,30 @@
 
 /* Begin PBXBuildFile section */
 		CD053F2D2BA83B020054CC0D /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD053F2C2BA83B020054CC0D /* Board.swift */; };
-		CD053F2F2BA83B5F0054CC0D /* TicTacToeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD053F2E2BA83B5F0054CC0D /* TicTacToeModel.swift */; };
-		CD053F312BA84D160054CC0D /* Square.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD053F302BA84D160054CC0D /* Square.swift */; };
 		CDA58DB72B63D0490081C747 /* CRAZYQUARTERApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA58DB62B63D0490081C747 /* CRAZYQUARTERApp.swift */; };
-		CDA58DB92B63D0490081C747 /* LaunchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA58DB82B63D0490081C747 /* LaunchView.swift */; };
 		CDA58DBB2B63D04B0081C747 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CDA58DBA2B63D04B0081C747 /* Assets.xcassets */; };
 		CDA58DBF2B63D04B0081C747 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CDA58DBE2B63D04B0081C747 /* Preview Assets.xcassets */; };
-		CDA58DE52B63D1040081C747 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA58DE22B63D1040081C747 /* ContentView.swift */; };
-		CDA58DE62B63D1040081C747 /* SquareView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA58DE32B63D1040081C747 /* SquareView.swift */; };
+		CDC8D1192F00271A0077BEE8 /* LaunchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC8D1162F00271A0077BEE8 /* LaunchView.swift */; };
+		CDC8D11A2F00271A0077BEE8 /* SquareView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC8D1172F00271A0077BEE8 /* SquareView.swift */; };
+		CDC8D11B2F00271A0077BEE8 /* Square.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC8D1102F00271A0077BEE8 /* Square.swift */; };
+		CDC8D11C2F00271A0077BEE8 /* ContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC8D1132F00271A0077BEE8 /* ContentViewModel.swift */; };
+		CDC8D11D2F00271A0077BEE8 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC8D1152F00271A0077BEE8 /* ContentView.swift */; };
+		CDC8D11E2F00271A0077BEE8 /* TicTacToeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC8D1112F00271A0077BEE8 /* TicTacToeModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		CD053F2C2BA83B020054CC0D /* Board.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Board.swift; sourceTree = "<group>"; };
-		CD053F2E2BA83B5F0054CC0D /* TicTacToeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicTacToeModel.swift; sourceTree = "<group>"; };
-		CD053F302BA84D160054CC0D /* Square.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Square.swift; sourceTree = "<group>"; };
 		CDA58DB32B63D0490081C747 /* CRAZYQUARTER.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CRAZYQUARTER.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CDA58DB62B63D0490081C747 /* CRAZYQUARTERApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CRAZYQUARTERApp.swift; sourceTree = "<group>"; };
-		CDA58DB82B63D0490081C747 /* LaunchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchView.swift; sourceTree = "<group>"; };
 		CDA58DBA2B63D04B0081C747 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CDA58DBC2B63D04B0081C747 /* CRAZYQUARTER.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CRAZYQUARTER.entitlements; sourceTree = "<group>"; };
 		CDA58DBE2B63D04B0081C747 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		CDA58DE22B63D1040081C747 /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		CDA58DE32B63D1040081C747 /* SquareView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SquareView.swift; sourceTree = "<group>"; };
+		CDC8D1102F00271A0077BEE8 /* Square.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Square.swift; sourceTree = "<group>"; };
+		CDC8D1112F00271A0077BEE8 /* TicTacToeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicTacToeModel.swift; sourceTree = "<group>"; };
+		CDC8D1132F00271A0077BEE8 /* ContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModel.swift; sourceTree = "<group>"; };
+		CDC8D1152F00271A0077BEE8 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		CDC8D1162F00271A0077BEE8 /* LaunchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchView.swift; sourceTree = "<group>"; };
+		CDC8D1172F00271A0077BEE8 /* SquareView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SquareView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,13 +64,10 @@
 		CDA58DB52B63D0490081C747 /* CRAZYQUARTER */ = {
 			isa = PBXGroup;
 			children = (
+				CDC8D1122F00271A0077BEE8 /* Models */,
+				CDC8D1142F00271A0077BEE8 /* ViewModels */,
+				CDC8D1182F00271A0077BEE8 /* Views */,
 				CDA58DB62B63D0490081C747 /* CRAZYQUARTERApp.swift */,
-				CDA58DB82B63D0490081C747 /* LaunchView.swift */,
-				CDA58DE22B63D1040081C747 /* ContentView.swift */,
-				CDA58DE32B63D1040081C747 /* SquareView.swift */,
-				CD053F302BA84D160054CC0D /* Square.swift */,
-				CD053F2C2BA83B020054CC0D /* Board.swift */,
-				CD053F2E2BA83B5F0054CC0D /* TicTacToeModel.swift */,
 				CDA58DBA2B63D04B0081C747 /* Assets.xcassets */,
 				CDA58DBC2B63D04B0081C747 /* CRAZYQUARTER.entitlements */,
 				CDA58DBD2B63D04B0081C747 /* Preview Content */,
@@ -82,6 +81,34 @@
 				CDA58DBE2B63D04B0081C747 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		CDC8D1122F00271A0077BEE8 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				CDC8D1102F00271A0077BEE8 /* Square.swift */,
+				CDC8D1112F00271A0077BEE8 /* TicTacToeModel.swift */,
+				CD053F2C2BA83B020054CC0D /* Board.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		CDC8D1142F00271A0077BEE8 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				CDC8D1132F00271A0077BEE8 /* ContentViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		CDC8D1182F00271A0077BEE8 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				CDC8D1152F00271A0077BEE8 /* ContentView.swift */,
+				CDC8D1162F00271A0077BEE8 /* LaunchView.swift */,
+				CDC8D1172F00271A0077BEE8 /* SquareView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -154,12 +181,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CD053F312BA84D160054CC0D /* Square.swift in Sources */,
-				CDA58DB92B63D0490081C747 /* LaunchView.swift in Sources */,
-				CDA58DE62B63D1040081C747 /* SquareView.swift in Sources */,
 				CD053F2D2BA83B020054CC0D /* Board.swift in Sources */,
-				CD053F2F2BA83B5F0054CC0D /* TicTacToeModel.swift in Sources */,
-				CDA58DE52B63D1040081C747 /* ContentView.swift in Sources */,
+				CDC8D1192F00271A0077BEE8 /* LaunchView.swift in Sources */,
+				CDC8D11A2F00271A0077BEE8 /* SquareView.swift in Sources */,
+				CDC8D11B2F00271A0077BEE8 /* Square.swift in Sources */,
+				CDC8D11C2F00271A0077BEE8 /* ContentViewModel.swift in Sources */,
+				CDC8D11D2F00271A0077BEE8 /* ContentView.swift in Sources */,
+				CDC8D11E2F00271A0077BEE8 /* TicTacToeModel.swift in Sources */,
 				CDA58DB72B63D0490081C747 /* CRAZYQUARTERApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

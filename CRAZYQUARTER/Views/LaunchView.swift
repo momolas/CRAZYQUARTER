@@ -53,6 +53,6 @@ struct LaunchView: View {
 }
 
 #Preview {
-    LaunchView(ticTacToe: TicTacToeModel(squares: [Square](repeating: Square(status: .empty), count: 9), currentPlayer: false))
+    LaunchView(ticTacToe: TicTacToeModel())
         .preferredColorScheme(.dark)
 }

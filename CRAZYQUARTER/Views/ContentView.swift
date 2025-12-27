@@ -49,7 +49,7 @@ struct ContentView: View {
                         .clipShape(.rect(cornerRadius: 10))
                         .foregroundStyle(colorScheme == .dark ? Color.white.opacity(0.7) : Color.black.opacity(0.7))
                 })
-                .sensoryFeedback(.impact(weight: .soft), trigger: vibro)
+				.sensoryFeedback(.impact(weight: .light), trigger: vibro)
 
                 Picker(selection: $viewModel.selection, label: Text("Partie")) {
                     Text("IA")
@@ -62,7 +62,7 @@ struct ContentView: View {
                 .onChange(of: viewModel.selection) { oldValue, newValue in
                     resetGame()
                 }
-                .sensoryFeedback(.impact(weight: .soft), trigger: viewModel.selection)
+				.sensoryFeedback(.impact(weight: .light), trigger: viewModel.selection)
 
                 ZStack {
                     Button(action: {
@@ -73,7 +73,7 @@ struct ContentView: View {
                             .clipShape(.rect(cornerRadius: 10))
                             .foregroundStyle(colorScheme == .dark ? Color.white.opacity(0.7) : Color.black.opacity(0.7))
                     })
-                    .sensoryFeedback(.impact(weight: .rigid), trigger: viewModel.popup)
+					.sensoryFeedback(.impact(weight: .heavy), trigger: viewModel.popup)
                 }
                 .popover(isPresented: $viewModel.popup) {
                     ZStack {
