@@ -26,10 +26,8 @@ class TicTacToeModel {
     }
     
     func resetGame() {
-        squares = squares.map { square in
-            let newSquare = square
-            newSquare.squareStatus = .empty
-            return newSquare
+        for square in squares {
+            square.squareStatus = .empty
         }
 
         currentPlayer = false
@@ -56,9 +54,10 @@ class TicTacToeModel {
     }
     
     func colorize(winner: SquareStatus, winningLine: [Int]) {
+        let highlight = winner == .x ? SquareStatus.xw : SquareStatus.ow
         withAnimation {
             for i in winningLine {
-                squares[i].squareStatus = winner
+                squares[i].squareStatus = highlight
             }
         }
         self.winner = winner
