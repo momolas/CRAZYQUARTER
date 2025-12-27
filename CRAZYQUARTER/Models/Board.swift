@@ -68,7 +68,7 @@ struct Board {
         for availableMove in availableMoves {
             let newBoard = move(availableMove)
             
-            let score = minimax(maximizing: !maximizing, originalPlayer: originalPlayer, alpha: alpha, beta: beta)
+            let score = newBoard.minimax(maximizing: !maximizing, originalPlayer: originalPlayer, alpha: alpha, beta: beta)
             
             if maximizing {
                 bestScore = max(bestScore, score)
@@ -91,7 +91,8 @@ struct Board {
         var bestMove: Int = -1
         
         for availableMove in availableMoves {
-            let score = minimax(maximizing: false, originalPlayer: currentTurn)
+            let newBoard = move(availableMove)
+            let score = newBoard.minimax(maximizing: false, originalPlayer: currentTurn)
             
             if score > bestScore {
                 bestScore = score

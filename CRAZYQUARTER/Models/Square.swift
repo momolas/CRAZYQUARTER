@@ -9,10 +9,6 @@ import Foundation
 import SwiftUI
 import Observation
 
-enum SquareStatus {
-    case empty, x, o, xw, ow
-}
-
 @Observable
 @MainActor
 class Square {
