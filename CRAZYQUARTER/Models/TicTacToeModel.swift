@@ -107,4 +107,10 @@ class TicTacToeModel {
             _ = makeMove(index: bestMove, gameType: true)
         }
     }
+
+    func handlePlayerInput(at index: Int, isPvP: Bool) {
+        if (currentPlayer == false && isPvP == false) || isPvP == true {
+            _ = makeMove(index: index, gameType: isPvP)
+        }
+    }
 }
