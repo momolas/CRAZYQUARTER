@@ -14,7 +14,7 @@ final class TicTacToeModelTests: XCTestCase {
     func testInitialization() {
         let model = TicTacToeModel(currentPlayer: false)
         XCTAssertEqual(model.squares.count, 9)
-        XCTAssertTrue(model.squares.allSatisfy { $0.squareStatus == .empty })
+        XCTAssertTrue(model.squares.allSatisfy { $0.status == .empty })
         XCTAssertFalse(model.currentPlayer) // X
         XCTAssertFalse(model.gameOver)
     }
@@ -24,7 +24,7 @@ final class TicTacToeModelTests: XCTestCase {
         let success = model.makeMove(index: 0, gameType: true) // PvP
 
         XCTAssertTrue(success)
-        XCTAssertEqual(model.squares[0].squareStatus, .x)
+        XCTAssertEqual(model.squares[0].status, .x)
         XCTAssertTrue(model.currentPlayer) // Toggled to O (true)
     }
 
@@ -33,7 +33,7 @@ final class TicTacToeModelTests: XCTestCase {
         let success = model.makeMove(index: 4, gameType: true)
 
         XCTAssertTrue(success)
-        XCTAssertEqual(model.squares[4].squareStatus, .o)
+        XCTAssertEqual(model.squares[4].status, .o)
         XCTAssertFalse(model.currentPlayer) // Toggled to X (false)
     }
 
@@ -69,16 +69,16 @@ final class TicTacToeModelTests: XCTestCase {
         // 2: X (2) -> X X X ? No wait logic above.
 
         // Let's brute force set
-        model.squares[0].squareStatus = .x
-        model.squares[1].squareStatus = .o
-        model.squares[2].squareStatus = .x
+        model.squares[0].status = .x
+        model.squares[1].status = .o
+        model.squares[2].status = .x
 
-        model.squares[3].squareStatus = .x
-        model.squares[4].squareStatus = .o
-        model.squares[5].squareStatus = .x
+        model.squares[3].status = .x
+        model.squares[4].status = .o
+        model.squares[5].status = .x
 
-        model.squares[6].squareStatus = .o
-        model.squares[7].squareStatus = .x
+        model.squares[6].status = .o
+        model.squares[7].status = .x
         // 8 is empty
 
         // Make last move at 8

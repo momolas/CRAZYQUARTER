@@ -1,5 +1,5 @@
 //
-//  ContentView.swift
+//  LaunchView.swift
 //  CRAZYQUARTER
 //
 //  Created by Mo on 26/01/2024.
@@ -9,37 +9,43 @@ import SwiftUI
 
 struct LaunchView: View {
     
-    let ticTacToe: TicTacToeModel
-    
     var body: some View {
         NavigationStack {
             VStack {
-                
                 Spacer()
                 
                 Text("CRAZYQUARTER")
                     .font(.largeTitle)
+                    .bold()
                 
                 Text("Une application pour jouer au morpion")
-                    .font(.caption)
+                    .font(.subheadline)
+                    .foregroundStyle(.secondary)
                 
                 Spacer()
                 
-                NavigationLink(value: "Game") {
-                    Image(systemName: "xmark.circle")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .foregroundStyle(.green)
-                        .frame(width: 200, height: 200)
+                NavigationLink(value: Route.game) {
+                    VStack(spacing: 16) {
+                        Image(systemName: "xmark.circle")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .foregroundStyle(.green)
+                            .frame(width: 180, height: 180)
+                        
+                        Text("Lancer la partie")
+                            .font(.headline)
+                            .foregroundStyle(.primary)
+                    }
                 }
+                .accessibilityLabel("Lancer une partie de morpion")
                 
-                Spacer()
                 Spacer()
             }
-            .navigationBarTitleDisplayMode(.inline)
-            .navigationDestination(for: String.self) { value in
-                if value == "Game" {
-                    ContentView(ticTacToe: ticTacToe, viewModel: ContentViewModel())
+            .toolbarTitleDisplayMode(.inline)
+            .navigationDestination(for: Route.self) { route in
+                switch route {
+                case .game:
+                    ContentView()
                 }
             }
         }
@@ -47,6 +53,7 @@ struct LaunchView: View {
 }
 
 #Preview {
-    LaunchView(ticTacToe: TicTacToeModel())
+    LaunchView()
+        .environment(TicTacToeModel())
         .preferredColorScheme(.dark)
 }

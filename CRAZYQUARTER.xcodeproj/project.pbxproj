@@ -18,6 +18,8 @@
 		CDC8D11D2F00271A0077BEE8 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC8D1152F00271A0077BEE8 /* ContentView.swift */; };
 		CDC8D11E2F00271A0077BEE8 /* TicTacToeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC8D1112F00271A0077BEE8 /* TicTacToeModel.swift */; };
 		CDC8D12F2F0040F40077BEE8 /* SquareStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC8D12E2F0040F40077BEE8 /* SquareStatus.swift */; };
+		CDC8D1312F0040F40077BEE8 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC8D1302F0040F40077BEE8 /* Route.swift */; };
+		CDC8D1332F0040F40077BEE8 /* GameMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC8D1322F0040F40077BEE8 /* GameMode.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +36,8 @@
 		CDC8D1162F00271A0077BEE8 /* LaunchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchView.swift; sourceTree = "<group>"; };
 		CDC8D1172F00271A0077BEE8 /* SquareView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SquareView.swift; sourceTree = "<group>"; };
 		CDC8D12E2F0040F40077BEE8 /* SquareStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SquareStatus.swift; sourceTree = "<group>"; };
+		CDC8D1302F0040F40077BEE8 /* Route.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
+		CDC8D1322F0040F40077BEE8 /* GameMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameMode.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,6 +96,8 @@
 				CDC8D1102F00271A0077BEE8 /* Square.swift */,
 				CDC8D1112F00271A0077BEE8 /* TicTacToeModel.swift */,
 				CD053F2C2BA83B020054CC0D /* Board.swift */,
+				CDC8D1302F0040F40077BEE8 /* Route.swift */,
+				CDC8D1322F0040F40077BEE8 /* GameMode.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -193,6 +199,8 @@
 				CDC8D11E2F00271A0077BEE8 /* TicTacToeModel.swift in Sources */,
 				CDC8D12F2F0040F40077BEE8 /* SquareStatus.swift in Sources */,
 				CDA58DB72B63D0490081C747 /* CRAZYQUARTERApp.swift in Sources */,
+				CDC8D1312F0040F40077BEE8 /* Route.swift in Sources */,
+				CDC8D1332F0040F40077BEE8 /* GameMode.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

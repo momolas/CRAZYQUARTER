@@ -1,54 +1,60 @@
 //
 //  SquareView.swift
-//  TicTacToe
+//  CRAZYQUARTER
 //
 //  Created by null on 05/09/2023.
 //
 
-import Foundation
 import SwiftUI
 
-struct SquareView : View {
-    @Environment(\.colorScheme) var colorScheme
+struct SquareView: View {
+    @Environment(\.colorScheme) private var colorScheme
     let square: Square
-    
-    var action: () -> Void
+    let action: () -> Void
     
     var body: some View {
-        Button(action: {
-            self.action()
-        }, label: {
-            Text(textForStatus(square.squareStatus))
-                .font(.system(size: 60))
-                .bold()
-                .foregroundStyle(colorForStatus(square.squareStatus))
-                .frame(width: 90, height: 90, alignment: .center)
-                .background(backgroundColor.clipShape(.rect(cornerRadius: 10)))
+        Button(action: action) {
+            Text(textForStatus(square.status))
+                .font(.system(size: 52, weight: .bold, design: .rounded))
+                .foregroundStyle(colorForStatus(square.status))
+                .frame(width: 90, height: 90)
+                .background(backgroundColor.clipShape(.rect(cornerRadius: 12)))
                 .padding(4)
-        })
+        }
+        .accessibilityLabel(accessibilityLabel(for: square.status))
     }
     
-    func textForStatus(_ status: SquareStatus) -> String {
+    private func textForStatus(_ status: SquareStatus) -> String {
         switch status {
-        case .x, .xw: return "X"
-        case .o, .ow: return "O"
-        default: return " "
+        case .x, .xw: "X"
+        case .o, .ow: "O"
+        default: " "
         }
     }
     
-    func colorForStatus(_ status: SquareStatus) -> Color {
+    private func accessibilityLabel(for status: SquareStatus) -> String {
+        switch status {
+        case .x: "Case X"
+        case .o: "Case O"
+        case .xw: "Case X gagnant"
+        case .ow: "Case O gagnant"
+        case .empty: "Case vide"
+        }
+    }
+    
+    private func colorForStatus(_ status: SquareStatus) -> Color {
         if status == .xw || status == .ow {
-            return Color.green.opacity(0.9)
+            return .green
         }
-        return colorScheme == .dark ? Color.white.opacity(0.9) : Color.black.opacity(0.9)
+        return .primary
     }
     
-    var backgroundColor: Color {
-        return colorScheme == .dark ? Color.white.opacity(0.3) : Color.gray.opacity(0.3)
+    private var backgroundColor: Color {
+        colorScheme == .dark ? Color.white.opacity(0.15) : Color.gray.opacity(0.15)
     }
 }
 
 #Preview {
-    SquareView(square: Square(status: .x), action: {})
-            .preferredColorScheme(.dark)
+    SquareView(square: Square(id: 0, status: .x), action: {})
+        .preferredColorScheme(.dark)
 }

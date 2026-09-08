@@ -6,15 +6,8 @@
 //
 
 import Foundation
-import SwiftUI
-import Observation
 
-@Observable
-@MainActor
-class Square {
-    var squareStatus: SquareStatus
-    
-    init(status: SquareStatus) {
-        self.squareStatus = status
-    }
+struct Square: Identifiable, Sendable, Equatable {
+    let id: Int
+    var status: SquareStatus
 }

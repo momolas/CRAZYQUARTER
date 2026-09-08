@@ -1,27 +1,43 @@
 //
 //  ContentView.swift
-//  TicTacToe
+//  CRAZYQUARTER
 //
 //  Created by null on 05/09/2023.
 //
 
 import SwiftUI
-import Combine
-import Foundation
 
 struct ContentView: View {
-    @Environment(\.colorScheme) var colorScheme
-    var ticTacToe: TicTacToeModel
-    @State var viewModel: ContentViewModel
-    
+    @Environment(TicTacToeModel.self) private var ticTacToe
+    @State private var viewModel = ContentViewModel()
     @AppStorage("vibro") private var vibro: Bool = true
     
-    var currentPlayerText: String {
-        return ticTacToe.currentPlayer == false ? "X" : "O"
+    private var currentPlayerText: String {
+        !ticTacToe.currentPlayer ? "X" : "O"
     }
     
-    var aiMoveText: String {
-        return ticTacToe.currentPlayer == false ? "vous" : "l'IA"
+    private var aiMoveText: String {
+        !ticTacToe.currentPlayer ? "vous" : "l'IA"
+    }
+    
+    private var gameOverMessage: String {
+        if viewModel.mode == .ai {
+            if ticTacToe.winner == .x {
+                return "Vous avez gagné !"
+            } else if ticTacToe.winner == .o {
+                return "L'IA a gagné !"
+            } else {
+                return "Match nul !"
+            }
+        } else {
+            if ticTacToe.winner == .x {
+                return "X a gagné !"
+            } else if ticTacToe.winner == .o {
+                return "O a gagné !"
+            } else {
+                return "Match nul !"
+            }
+        }
     }
     
     var body: some View {
@@ -34,76 +50,73 @@ struct ContentView: View {
                 }
                 .labelStyle(.iconOnly)
                 .frame(width: 44, height: 44)
-                .background(Color.clear) // Ensure touch area
                 .clipShape(.rect(cornerRadius: 10))
-                .foregroundStyle(colorScheme == .dark ? Color.white.opacity(0.7) : Color.black.opacity(0.7))
+                .foregroundStyle(.secondary)
                 .sensoryFeedback(.impact(weight: .light), trigger: vibro)
                 
-                Picker(selection: $viewModel.selection, label: Text("Partie")) {
-                    Text("IA")
-                        .tag(false)
-                    Text("PvP")
-                        .tag(true)
+                Picker("Partie", selection: $viewModel.mode) {
+                    ForEach(GameMode.allCases) { mode in
+                        Text(mode.rawValue).tag(mode)
+                    }
                 }
                 .pickerStyle(.segmented)
                 .padding(.horizontal, 10)
-                .onChange(of: viewModel.selection) { oldValue, newValue in
+                .onChange(of: viewModel.mode) {
                     ticTacToe.resetGame()
                 }
-                .sensoryFeedback(.impact(weight: .light), trigger: viewModel.selection)
+                .sensoryFeedback(.impact(weight: .light), trigger: viewModel.mode) { _, _ in
+                    vibro
+                }
                 
-                ZStack {
-                    Button("Info", systemImage: "info.circle") {
-                        viewModel.popup.toggle()
-                    }
-                    .labelStyle(.iconOnly)
-                    .frame(width: 44, height: 44)
-                    .clipShape(.rect(cornerRadius: 10))
-                    .foregroundStyle(colorScheme == .dark ? Color.white.opacity(0.7) : Color.black.opacity(0.7))
-                    .sensoryFeedback(.impact(weight: .heavy), trigger: viewModel.popup)
+                Button("Info", systemImage: "info.circle") {
+                    viewModel.popup.toggle()
+                }
+                .labelStyle(.iconOnly)
+                .frame(width: 44, height: 44)
+                .clipShape(.rect(cornerRadius: 10))
+                .foregroundStyle(.secondary)
+                .sensoryFeedback(.impact(weight: .heavy), trigger: viewModel.popup) { _, _ in
+                    vibro
                 }
                 .popover(isPresented: $viewModel.popup) {
-                    ZStack {
-                        VStack {
-                            Text("TicTacToe")
-                                .bold()
-                                .font(.system(size: 80)) // Kept as large title logic, but cleaned up
-                                .padding(.top, 20)
-                                .foregroundStyle(colorScheme == .dark ? Color.white.opacity(0.7) : Color.black.opacity(0.7))
-                            
-                            Text("Demo Swift App, made by Momo L'As")
-                                .bold()
-                                .font(.title3)
-                                .foregroundStyle(colorScheme == .dark ? Color.white.opacity(0.7) : Color.black.opacity(0.7))
-                        }
-                        .padding(.top, 3)
+                    VStack(spacing: 12) {
+                        Text("TicTacToe")
+                            .font(.largeTitle)
+                            .bold()
+                            .foregroundStyle(.primary)
+                        
+                        Text("Demo Swift App, made by Momo L'As")
+                            .font(.subheadline)
+                            .foregroundStyle(.secondary)
                     }
+                    .padding()
                 }
             }
+            .padding(.horizontal)
             
             Spacer()
             
-            Text(viewModel.selection == false ? "Morpion - IA" : "Morpion - PvP")
-                .bold()
+            Text(viewModel.mode == .pvp ? "Morpion - PvP" : "Morpion - IA")
                 .font(.title)
-                .foregroundStyle(colorScheme == .dark ? Color.white.opacity(0.7) : Color.black.opacity(0.7))
-            
-            Text(viewModel.selection == true ? "À \(currentPlayerText) de jouer" : "À \(aiMoveText) de jouer")
                 .bold()
+                .foregroundStyle(.primary)
+            
+            Text(viewModel.mode == .pvp ? "À \(currentPlayerText) de jouer" : "À \(aiMoveText) de jouer")
                 .font(.title2)
+                .bold()
+                .foregroundStyle(.secondary)
                 .padding(.bottom)
-                .foregroundStyle(colorScheme == .dark ? Color.white.opacity(0.7) : Color.black.opacity(0.7))
             
             Grid {
                 ForEach(0..<3) { row in
                     GridRow {
                         ForEach(0..<3) { column in
                             let index = row * 3 + column
-                            SquareView(square: ticTacToe.squares[index], action: {
-                                ticTacToe.handlePlayerInput(at: index, isPvP: viewModel.selection)
-                            })
-                            .sensoryFeedback(.impact(weight: .medium), trigger: ticTacToe.squares[index].squareStatus) { oldValue, newValue in
-                                return newValue != .empty
+                            SquareView(square: ticTacToe.squares[index]) {
+                                ticTacToe.handlePlayerInput(at: index, mode: viewModel.mode)
+                            }
+                            .sensoryFeedback(.impact(weight: .medium), trigger: ticTacToe.squares[index].status) { _, newValue in
+                                vibro && newValue != .empty
                             }
                         }
                     }
@@ -120,42 +133,24 @@ struct ContentView: View {
             .padding(.horizontal, 24)
             .padding(.vertical, 10)
             .background(.thinMaterial)
-            .clipShape(.rect(cornerRadius: 5))
-            .foregroundStyle(Color.red.opacity(0.7))
-            .alert(isPresented: $bindableModel.gameOver) {
-                var text = ""
-                
-                if viewModel.selection == false {
-                    if ticTacToe.winner == .x {
-                        text = "Vous avez gagné !"
-                    } else if ticTacToe.winner == .o {
-                        text = "L'IA a gagné !"
-                    } else {
-                        text = "Match nul !"
-                    }
-                } else {
-                    if ticTacToe.winner == .x {
-                        text = "X a gagné !"
-                    } else if ticTacToe.winner == .o {
-                        text = "O a gagné !"
-                    } else {
-                        text = "Match nul !"
-                    }
+            .clipShape(.rect(cornerRadius: 8))
+            .foregroundStyle(.red)
+            .alert("Fin de partie", isPresented: $bindableModel.gameOver) {
+                Button("Rejouer") {
+                    ticTacToe.resetGame()
                 }
-                
-                return Alert(
-                    title: Text(text),
-                    dismissButton: .cancel(Text("Ok"), action: {
-                        ticTacToe.resetGame()
-                    })
-                )
+            } message: {
+                Text(gameOverMessage)
             }
         }
-        .sensoryFeedback(.impact(weight: .medium), trigger: ticTacToe.hapticTrigger)
+        .sensoryFeedback(.impact(weight: .medium), trigger: ticTacToe.hapticTrigger) { _, _ in
+            vibro
+        }
     }
 }
 
 #Preview {
-    ContentView(ticTacToe: TicTacToeModel(currentPlayer: false), viewModel: ContentViewModel())
+    ContentView()
+        .environment(TicTacToeModel(currentPlayer: false))
         .preferredColorScheme(.dark)
 }

@@ -7,6 +7,6 @@
 
 import Foundation
 
-enum SquareStatus {
+enum SquareStatus: Sendable, Hashable {
     case empty, x, o, xw, ow
 }

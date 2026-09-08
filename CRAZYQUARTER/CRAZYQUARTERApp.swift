@@ -13,8 +13,9 @@ struct CRAZYQUARTERApp: App {
     
     var body: some Scene {
         WindowGroup {
-            // LaunchView is the entry, it handles navigation to ContentView.
-            LaunchView(ticTacToe: ticTacToe)
+            LaunchView()
+                .environment(ticTacToe)
         }
     }
 }
+

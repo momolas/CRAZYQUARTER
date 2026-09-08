@@ -11,7 +11,7 @@ import Observation
 
 @Observable
 @MainActor
-class ContentViewModel {
+final class ContentViewModel {
     var popup: Bool = false
-    var selection: Bool = false // Game mode: false = AI, true = PvP
+    var mode: GameMode = .ai
 }
