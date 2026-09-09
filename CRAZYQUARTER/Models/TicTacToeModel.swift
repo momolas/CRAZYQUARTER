@@ -41,13 +41,7 @@ final class TicTacToeModel {
     }
     
     private func checkWinner() -> (SquareStatus, [Int])? {
-        let lines = [
-            [0, 1, 2], [3, 4, 5], [6, 7, 8],
-            [0, 3, 6], [1, 4, 7], [2, 5, 8],
-            [0, 4, 8], [2, 4, 6]
-        ]
-        
-        for line in lines {
+        for line in Board.winningLines {
             let squares = line.map { self.squares[$0] }
             if squares.allSatisfy({ $0.status == .x }) {
                 return (.x, line)
@@ -93,8 +87,12 @@ final class TicTacToeModel {
         if !currentPlayer && !gameType {
             aiTask?.cancel()
             aiTask = Task { [weak self] in
-                try? await Task.sleep(for: .seconds(0.5))
-                guard !Task.isCancelled, let self, !self.gameOver, self.currentPlayer else { return }
+                do {
+                    try await Task.sleep(for: .seconds(0.5))
+                } catch {
+                    return
+                }
+                guard let self, !self.gameOver, self.currentPlayer else { return }
                 self.makeAIMove()
                 self.hapticTrigger += 1
             }
@@ -107,7 +105,7 @@ final class TicTacToeModel {
 
     
     var boardPositions: [SquareStatus] {
-        return squares.map { $0.status }
+        squares.map { $0.status }
     }
     
     private func makeAIMove() {

@@ -6,9 +6,8 @@
 //
 
 import Foundation
-import SwiftUI
 
-struct Board {
+struct Board: Sendable, Equatable {
     let positions: [SquareStatus] // Renamed for clarity
     let currentTurn: SquareStatus
     let lastMove: Int
@@ -29,18 +28,18 @@ struct Board {
         return Board(positions: newPositions, currentTurn: opposite, lastMove: location)
     }
     
+    static let winningLines: [[Int]] = [
+        [0, 1, 2], [3, 4, 5], [6, 7, 8],
+        [0, 3, 6], [1, 4, 7], [2, 5, 8],
+        [0, 4, 8], [2, 4, 6]
+    ]
+    
     var availableMoves: [Int] {
-        return positions.indices.filter { positions[$0] == .empty }
+        positions.indices.filter { positions[$0] == .empty }
     }
     
     var isWin: Bool {
-        let lines = [
-            [0, 1, 2], [3, 4, 5], [6, 7, 8],
-            [0, 3, 6], [1, 4, 7], [2, 5, 8],
-            [0, 4, 8], [2, 4, 6]
-        ]
-        
-        for line in lines {
+        for line in Self.winningLines {
             let squares = line.map { positions[$0] }
             if squares.allSatisfy({ $0 == .x }) || squares.allSatisfy({ $0 == .o }) {
                 return true
@@ -51,7 +50,7 @@ struct Board {
     }
     
     var isDraw: Bool {
-        return !isWin && availableMoves.isEmpty
+        !isWin && availableMoves.isEmpty
     }
     
     func minimax(maximizing: Bool, originalPlayer: SquareStatus, alpha: Int = Int.min, beta: Int = Int.max) -> Int {

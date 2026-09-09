@@ -12,36 +12,8 @@ struct ContentView: View {
     @State private var viewModel = ContentViewModel()
     @AppStorage("vibro") private var vibro: Bool = true
     
-    private var currentPlayerText: String {
-        !ticTacToe.currentPlayer ? "X" : "O"
-    }
-    
-    private var aiMoveText: String {
-        !ticTacToe.currentPlayer ? "vous" : "l'IA"
-    }
-    
-    private var gameOverMessage: String {
-        if viewModel.mode == .ai {
-            if ticTacToe.winner == .x {
-                return "Vous avez gagné !"
-            } else if ticTacToe.winner == .o {
-                return "L'IA a gagné !"
-            } else {
-                return "Match nul !"
-            }
-        } else {
-            if ticTacToe.winner == .x {
-                return "X a gagné !"
-            } else if ticTacToe.winner == .o {
-                return "O a gagné !"
-            } else {
-                return "Match nul !"
-            }
-        }
-    }
-    
     var body: some View {
-        @Bindable var bindableModel = ticTacToe
+        @Bindable var ticTacToe = ticTacToe
         
         VStack {
             HStack {
@@ -79,17 +51,7 @@ struct ContentView: View {
                     vibro
                 }
                 .popover(isPresented: $viewModel.popup) {
-                    VStack(spacing: 12) {
-                        Text("TicTacToe")
-                            .font(.largeTitle)
-                            .bold()
-                            .foregroundStyle(.primary)
-                        
-                        Text("Demo Swift App, made by Momo L'As")
-                            .font(.subheadline)
-                            .foregroundStyle(.secondary)
-                    }
-                    .padding()
+                    AboutView()
                 }
             }
             .padding(.horizontal)
@@ -101,16 +63,16 @@ struct ContentView: View {
                 .bold()
                 .foregroundStyle(.primary)
             
-            Text(viewModel.mode == .pvp ? "À \(currentPlayerText) de jouer" : "À \(aiMoveText) de jouer")
+            Text(viewModel.turnMessage(currentPlayer: ticTacToe.currentPlayer))
                 .font(.title2)
                 .bold()
                 .foregroundStyle(.secondary)
                 .padding(.bottom)
             
             Grid {
-                ForEach(0..<3) { row in
+                ForEach(0..<3, id: \.self) { row in
                     GridRow {
-                        ForEach(0..<3) { column in
+                        ForEach(0..<3, id: \.self) { column in
                             let index = row * 3 + column
                             SquareView(square: ticTacToe.squares[index]) {
                                 ticTacToe.handlePlayerInput(at: index, mode: viewModel.mode)
@@ -135,12 +97,12 @@ struct ContentView: View {
             .background(.thinMaterial)
             .clipShape(.rect(cornerRadius: 8))
             .foregroundStyle(.red)
-            .alert("Fin de partie", isPresented: $bindableModel.gameOver) {
+            .alert("Fin de partie", isPresented: $ticTacToe.gameOver) {
                 Button("Rejouer") {
                     ticTacToe.resetGame()
                 }
             } message: {
-                Text(gameOverMessage)
+                Text(viewModel.gameOverMessage(winner: ticTacToe.winner))
             }
         }
         .sensoryFeedback(.impact(weight: .medium), trigger: ticTacToe.hapticTrigger) { _, _ in

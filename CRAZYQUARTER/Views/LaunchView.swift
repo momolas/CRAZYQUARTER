@@ -25,7 +25,7 @@ struct LaunchView: View {
                 Spacer()
                 
                 NavigationLink(value: Route.game) {
-                    VStack(spacing: 16) {
+                    VStack {
                         Image(systemName: "xmark.circle")
                             .resizable()
                             .aspectRatio(contentMode: .fit)
@@ -41,6 +41,7 @@ struct LaunchView: View {
                 
                 Spacer()
             }
+            .navigationTitle("CRAZYQUARTER")
             .toolbarTitleDisplayMode(.inline)
             .navigationDestination(for: Route.self) { route in
                 switch route {

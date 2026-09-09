@@ -5,70 +5,70 @@
 //  Created by Jules on 18/03/2024.
 //
 
-import XCTest
+import Testing
 @testable import CRAZYQUARTER
 
 @MainActor
-final class TicTacToeModelTests: XCTestCase {
+struct TicTacToeModelTests {
 
-    func testInitialization() {
+    // MARK: - TicTacToeModel Tests
+
+    @Test func initialization() {
         let model = TicTacToeModel(currentPlayer: false)
-        XCTAssertEqual(model.squares.count, 9)
-        XCTAssertTrue(model.squares.allSatisfy { $0.status == .empty })
-        XCTAssertFalse(model.currentPlayer) // X
-        XCTAssertFalse(model.gameOver)
+        #expect(model.squares.count == 9)
+        #expect(model.squares.allSatisfy { $0.status == .empty })
+        #expect(!model.currentPlayer) // X
+        #expect(!model.gameOver)
+        #expect(model.winner == .empty)
     }
 
-    func testMakeMove() {
+    @Test func makeMoveX() {
         let model = TicTacToeModel(currentPlayer: false)
         let success = model.makeMove(index: 0, gameType: true) // PvP
 
-        XCTAssertTrue(success)
-        XCTAssertEqual(model.squares[0].status, .x)
-        XCTAssertTrue(model.currentPlayer) // Toggled to O (true)
+        #expect(success)
+        #expect(model.squares[0].status == .x)
+        #expect(model.currentPlayer) // Toggled to O (true)
     }
 
-    func testMakeMoveO() {
+    @Test func makeMoveO() {
         let model = TicTacToeModel(currentPlayer: true) // O starts
         let success = model.makeMove(index: 4, gameType: true)
 
-        XCTAssertTrue(success)
-        XCTAssertEqual(model.squares[4].status, .o)
-        XCTAssertFalse(model.currentPlayer) // Toggled to X (false)
+        #expect(success)
+        #expect(model.squares[4].status == .o)
+        #expect(!model.currentPlayer) // Toggled to X (false)
     }
 
-    func testWinDetection() {
+    @Test func makeMoveOnOccupiedSquare() {
         let model = TicTacToeModel(currentPlayer: false)
-
-        // X moves 0
         _ = model.makeMove(index: 0, gameType: true)
-        // O moves 3
-        _ = model.makeMove(index: 3, gameType: true)
-        // X moves 1
-        _ = model.makeMove(index: 1, gameType: true)
-        // O moves 4
-        _ = model.makeMove(index: 4, gameType: true)
-        // X moves 2 (Wins)
-        _ = model.makeMove(index: 2, gameType: true)
+        let secondMoveSuccess = model.makeMove(index: 0, gameType: true)
 
-        XCTAssertTrue(model.gameOver)
-        XCTAssertEqual(model.winner, .x)
+        #expect(!secondMoveSuccess)
+        #expect(model.squares[0].status == .x)
     }
 
-    func testDrawDetection() {
+    @Test func winDetection() {
         let model = TicTacToeModel(currentPlayer: false)
 
-        // Fill board without winner
+        _ = model.makeMove(index: 0, gameType: true) // X
+        _ = model.makeMove(index: 3, gameType: true) // O
+        _ = model.makeMove(index: 1, gameType: true) // X
+        _ = model.makeMove(index: 4, gameType: true) // O
+        _ = model.makeMove(index: 2, gameType: true) // X wins
+
+        #expect(model.gameOver)
+        #expect(model.winner == .x)
+    }
+
+    @Test func drawDetection() {
+        let model = TicTacToeModel(currentPlayer: false)
+
+        // Set up board for a draw:
         // X O X
         // X O X
-        // O X O
-
-        let moves = [0, 1, 2, 4, 3, 5, 7, 6, 8]
-        // 0: X (0)
-        // 1: O (1)
-        // 2: X (2) -> X X X ? No wait logic above.
-
-        // Let's brute force set
+        // O X .
         model.squares[0].status = .x
         model.squares[1].status = .o
         model.squares[2].status = .x
@@ -79,29 +79,111 @@ final class TicTacToeModelTests: XCTestCase {
 
         model.squares[6].status = .o
         model.squares[7].status = .x
-        // 8 is empty
 
-        // Make last move at 8
-        // Current player should be O (if we alternated properly, but we set manually)
-        // Let's say current player is O
-        model.currentPlayer = true
-        _ = model.makeMove(index: 8, gameType: true)
+        model.currentPlayer = true // O plays last move
+        let success = model.makeMove(index: 8, gameType: true)
 
-        // 8 becomes O
-        // Board:
-        // X O X
-        // X O X
-        // O X O
+        #expect(success)
+        #expect(model.gameOver)
+        #expect(model.winner == .empty)
+    }
 
-        // Check cols
-        // 0,3,6: X, X, O
-        // 1,4,7: O, O, X
-        // 2,5,8: X, X, O
-        // Diags:
-        // 0,4,8: X, O, O
-        // 2,4,6: X, O, O
+    @Test func resetGame() {
+        let model = TicTacToeModel(currentPlayer: false)
+        _ = model.makeMove(index: 0, gameType: true)
+        _ = model.makeMove(index: 1, gameType: true)
 
-        XCTAssertTrue(model.gameOver)
-        XCTAssertEqual(model.winner, .empty)
+        model.resetGame()
+
+        #expect(model.squares.allSatisfy { $0.status == .empty })
+        #expect(!model.currentPlayer)
+        #expect(!model.gameOver)
+        #expect(model.winner == .empty)
+    }
+
+    // MARK: - Board Model Tests
+
+    @Test func boardInitialState() {
+        let board = Board()
+        #expect(board.positions.count == 9)
+        #expect(board.availableMoves.count == 9)
+        #expect(!board.isWin)
+        #expect(!board.isDraw)
+    }
+
+    @Test func boardMoveAndAlternateTurn() {
+        let board = Board()
+        let nextBoard = board.move(4)
+
+        #expect(nextBoard.positions[4] == .x)
+        #expect(nextBoard.currentTurn == .o)
+        #expect(nextBoard.lastMove == 4)
+        #expect(nextBoard.availableMoves.count == 8)
+    }
+
+    @Test func boardWinDetectionHorizontal() {
+        let positions: [SquareStatus] = [
+            .x, .x, .x,
+            .empty, .empty, .empty,
+            .empty, .empty, .empty
+        ]
+        let board = Board(positions: positions, currentTurn: .o, lastMove: 2)
+        #expect(board.isWin)
+    }
+
+    @Test func boardAIWinsWhenImmediateOpportunityExists() {
+        // O needs 1 move to win at index 2:
+        // O O .
+        // X X .
+        // . . .
+        let positions: [SquareStatus] = [
+            .o, .o, .empty,
+            .x, .x, .empty,
+            .empty, .empty, .empty
+        ]
+        let board = Board(positions: positions, currentTurn: .o, lastMove: 4)
+        let bestMove = board.findBestMove()
+        #expect(bestMove == 2)
+    }
+
+    @Test func boardAIBlocksOpponentWinningMove() {
+        // X is about to win at index 2:
+        // X X .
+        // O . .
+        // . . .
+        let positions: [SquareStatus] = [
+            .x, .x, .empty,
+            .o, .empty, .empty,
+            .empty, .empty, .empty
+        ]
+        let board = Board(positions: positions, currentTurn: .o, lastMove: 1)
+        let bestMove = board.findBestMove()
+        #expect(bestMove == 2)
+    }
+
+    // MARK: - ContentViewModel Tests
+
+    @Test func contentViewModelTurnMessages() {
+        let vm = ContentViewModel()
+        vm.mode = .pvp
+        #expect(vm.turnMessage(currentPlayer: false) == "À X de jouer")
+        #expect(vm.turnMessage(currentPlayer: true) == "À O de jouer")
+
+        vm.mode = .ai
+        #expect(vm.turnMessage(currentPlayer: false) == "À vous de jouer")
+        #expect(vm.turnMessage(currentPlayer: true) == "À l'IA de jouer")
+    }
+
+    @Test func contentViewModelGameOverMessages() {
+        let vm = ContentViewModel()
+        vm.mode = .ai
+        #expect(vm.gameOverMessage(winner: .x) == "Vous avez gagné !")
+        #expect(vm.gameOverMessage(winner: .o) == "L'IA a gagné !")
+        #expect(vm.gameOverMessage(winner: .empty) == "Match nul !")
+
+        vm.mode = .pvp
+        #expect(vm.gameOverMessage(winner: .x) == "X a gagné !")
+        #expect(vm.gameOverMessage(winner: .o) == "O a gagné !")
+        #expect(vm.gameOverMessage(winner: .empty) == "Match nul !")
     }
 }

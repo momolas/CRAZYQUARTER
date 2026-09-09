@@ -9,19 +9,22 @@ import SwiftUI
 
 struct SquareView: View {
     @Environment(\.colorScheme) private var colorScheme
+    @ScaledMetric(relativeTo: .largeTitle) private var fontSize: CGFloat = 52
+    
     let square: Square
     let action: () -> Void
     
     var body: some View {
         Button(action: action) {
             Text(textForStatus(square.status))
-                .font(.system(size: 52, weight: .bold, design: .rounded))
+                .font(.system(size: fontSize, design: .rounded).bold())
                 .foregroundStyle(colorForStatus(square.status))
                 .frame(width: 90, height: 90)
                 .background(backgroundColor.clipShape(.rect(cornerRadius: 12)))
                 .padding(4)
         }
         .accessibilityLabel(accessibilityLabel(for: square.status))
+        .accessibilityHint(square.status == .empty ? "Toucher pour placer votre symbole" : "")
     }
     
     private func textForStatus(_ status: SquareStatus) -> String {
@@ -44,9 +47,10 @@ struct SquareView: View {
     
     private func colorForStatus(_ status: SquareStatus) -> Color {
         if status == .xw || status == .ow {
-            return .green
+            .green
+        } else {
+            .primary
         }
-        return .primary
     }
     
     private var backgroundColor: Color {
